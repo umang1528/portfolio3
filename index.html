@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style id="theme-variables">
+    /* Initial default theme variables (will be overridden by ThemeProvider) */
+    :root {
+      --body-bg: rgb(15 23 42);
+      --text-primary: rgb(241 245 249);
+      --text-secondary: rgb(148 163 184);
+      --accent-primary: rgb(6 182 212);
+      --accent-secondary: rgb(168 85 247);
+      --accent-tertiary: rgb(236 72 153);
+      --card-bg: rgb(30 41 59);
+      --card-bg-light: rgba(51, 65, 85, 0.7);
+      --border-color: rgba(51, 65, 85, 0.5);
+      --button-primary-bg-gradient-from: rgb(6 182 212);
+      --button-primary-bg-gradient-to: rgb(168 85 247);
+      --button-primary-text: rgb(255 255 255);
+      --button-primary-hover-bg-gradient-from: rgb(20 184 166);
+      --button-primary-hover-bg-gradient-to: rgb(192 38 211);
+      --selection-bg: rgb(6 182 212);
+      --selection-text: rgb(15 23 42);
+      --scrollbar-track: rgb(30 41 59);
+      --scrollbar-thumb: rgb(56 189 248);
+      --scrollbar-thumb-hover: rgb(14 165 233);
+      --shadow-color-primary: rgb(6 182 212);
+      --shadow-color-secondary: rgb(168 85 247);
+      --shadow-color-tertiary: rgb(236 72 153);
+      --nav-bg: rgba(15, 23, 42, 0.8);
+      --footer-bg: rgba(30, 41, 59, 0.5);
+      --section-title-from: rgb(6 182 212);
+      --section-title-to: rgb(168 85 247);
+      --section-title-underline-from: rgb(6 182 212);
+      --section-title-underline-to: rgb(168 85 247);
+      --input-bg: rgb(51 65 85);
+      --input-border: rgb(71 85 105);
+      --input-focus-ring: rgb(6 182 212);
+      --filter-button-active-bg-gradient-from: rgb(6 182 212);
+      --filter-button-active-bg-gradient-to: rgb(168 85 247);
+      --filter-button-active-text: rgb(255 255 255);
+      --filter-button-bg: rgb(51 65 85);
+      --filter-button-text: rgb(203 213 225);
+      --filter-button-hover-bg: rgb(71 85 105);
+      --success-message-bg: rgba(16, 185, 129, 0.2);
+      --success-message-text: rgb(52, 211, 153);
+      --success-message-border: rgb(16, 185, 129);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--body-bg); /* Applied here for initial load */
+      overflow-x: hidden; /* Prevent horizontal scroll from large orbs */
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--scrollbar-track);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar-thumb);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scrollbar-thumb-hover);
+    }
+    /* Custom Cursor: Hide default cursor */
+    body, body * {
+      cursor: none !important;
+    }
+    .interactive-cursor-target {
+       cursor: none !important; /* Ensure interactive elements also don't show default cursor */
+    }
+
+    /* Custom Cursor Base Styles */
+    .custom-cursor-dot {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      border-radius: 50%;
+      background-color: var(--accent-primary);
+      opacity: 0; /* Default hidden, JS controls visibility via style.opacity */
+      transition: width 0.2s ease-out, height 0.2s ease-out, opacity 0.2s ease-out;
+      /* Transform, top, left are applied directly by JS for performance */
+      will-change: transform, width, height, opacity;
+    }
+
+    .custom-cursor-outline {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      border-radius: 50%;
+      border: 1.5px solid var(--accent-secondary);
+      opacity: 0; /* Default hidden, JS controls visibility via style.opacity */
+      animation: outline-shine-pulse 2s infinite ease-in-out;
+      /* Initial box-shadow to match animation start for smooth transition if JS is slow */
+      box-shadow: 0 0 5px 0px var(--accent-secondary);
+      /* Transform, top, left are applied directly by JS for performance */
+      transition: width 0.2s ease-out, height 0.2s ease-out, opacity 0.2s ease-out, border-width 0.2s ease-out, box-shadow 0.2s ease-out;
+      /* Delay transform transition slightly for trailing effect in JS if needed */
+      will-change: transform, width, height, opacity, border-width, box-shadow;
+    }
+
+    /* Animations for the outline's shine */
+    @keyframes outline-shine-pulse {
+      0%, 100% { box-shadow: 0 0 5px 0px var(--accent-secondary); }
+      50% { box-shadow: 0 0 15px 3px var(--accent-secondary); }
+    }
+
+    @keyframes outline-shine-pulse-interactive {
+      0%, 100% { box-shadow: 0 0 8px 1px var(--accent-secondary); }
+      50% { box-shadow: 0 0 20px 4px var(--accent-secondary); }
+    }
+
+    /* Class to switch animation for interactive elements */
+    .custom-cursor-outline.interactive {
+      animation-name: outline-shine-pulse-interactive;
+      animation-duration: 1.5s;
+    }
+
+    /* Background Orb Animations */
+    @keyframes floatOrb1 {
+      0% { transform: translate(0vw, 0vh) scale(1); opacity: 0.15; }
+      25% { transform: translate(10vw, -15vh) scale(1.1); opacity: 0.25; }
+      50% { transform: translate(-5vw, 5vh) scale(0.9); opacity: 0.2; }
+      75% { transform: translate(5vw, 10vh) scale(1.05); opacity: 0.3; }
+      100% { transform: translate(0vw, 0vh) scale(1); opacity: 0.15; }
+    }
+    @keyframes floatOrb2 {
+      0% { transform: translate(0vw, 0vh) scale(1); opacity: 0.2; }
+      25% { transform: translate(-12vw, 10vh) scale(0.95); opacity: 0.3; }
+      50% { transform: translate(8vw, -8vh) scale(1.15); opacity: 0.15; }
+      75% { transform: translate(-3vw, -12vh) scale(1); opacity: 0.25; }
+      100% { transform: translate(0vw, 0vh) scale(1); opacity: 0.2; }
+    }
+    @keyframes floatOrb3 {
+      0% { transform: translate(0vw, 0vh) scale(1); opacity: 0.25; }
+      25% { transform: translate(15vw, 5vh) scale(1.1); opacity: 0.15; }
+      50% { transform: translate(-10vw, -10vh) scale(0.9); opacity: 0.3; }
+      75% { transform: translate(3vw, 12vh) scale(1.05); opacity: 0.2; }
+      100% { transform: translate(0vw, 0vh) scale(1); opacity: 0.25; }
+    }
+     @keyframes floatOrb4 {
+      0% { transform: translate(0vw, 0vh) scale(0.9); opacity: 0.1; }
+      25% { transform: translate(8vw, 12vh) scale(1); opacity: 0.2; }
+      50% { transform: translate(-12vw, -5vh) scale(1.05); opacity: 0.25; }
+      75% { transform: translate(5vw, -15vh) scale(0.95); opacity: 0.15; }
+      100% { transform: translate(0vw, 0vh) scale(0.9); opacity: 0.1; }
+    }
+    @keyframes floatOrb5 {
+      0% { transform: translate(0vw, 0vh) scale(1.05); opacity: 0.3; }
+      25% { transform: translate(-10vw, -8vh) scale(0.9); opacity: 0.2; }
+      50% { transform: translate(12vw, 10vh) scale(1.1); opacity: 0.25; }
+      75% { transform: translate(-5vw, 5vh) scale(1); opacity: 0.15; }
+      100% { transform: translate(0vw, 0vh) scale(1.05); opacity: 0.3; }
+    }
+
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.6.2",
+    "@/pages/ContactPage": "/pages/ContactPage.tsx"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-[var(--body-bg)]"> <!-- Ensure Tailwind respects the var -->
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
