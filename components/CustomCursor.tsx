@@ -151,8 +151,8 @@ const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  const dotBaseSize = 8;
-  const outlineBaseSize = 30;
+  const dotBaseSize = 15;
+  const outlineBaseSize = 5;
 
   const dotSize = isHoveringInteractive ? dotBaseSize * 1.5 : dotBaseSize;
   const outlineSize = isHoveringInteractive ? outlineBaseSize * 1.33 : outlineBaseSize;
