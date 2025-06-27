@@ -12,8 +12,8 @@ interface Particle {
   dy: number; // vertical velocity
 }
 
-const MAX_PARTICLES = 30;
-const PARTICLE_LIFESPAN_MS = 800;
+const MAX_PARTICLES = 500;
+const PARTICLE_LIFESPAN_MS = 3000;
 const PARTICLE_GENERATION_THROTTLE_MS = 50;
 const PARTICLE_MIN_SIZE = 3;
 const PARTICLE_MAX_SIZE = 8;
