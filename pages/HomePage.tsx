@@ -54,24 +54,25 @@ const HomePage: React.FC = () => {
       </section>
 
       <section>
-        <SectionTitle title="What I Do" subtitle="Crafting unique experiences across digital, physical, and artistic spaces." />
+        <SectionTitle title="What I Do" subtitle="Designing with depth — blending aesthetics, emotion, and strategy effortlessly." />
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-[var(--text-secondary)]">
           <div className="bg-[var(--card-bg-light)] p-6 rounded-lg shadow-lg hover:shadow-[var(--shadow-color-primary)]/20 transition-shadow duration-300">
             <h3 className="text-2xl font-bold text-[var(--accent-primary)] mb-3">Interior Design</h3>
             <p className="leading-relaxed">
-              Transforming spaces into functional, aesthetic, and inspiring environments. From residential sanctuaries to dynamic commercial hubs, every detail is considered to reflect personality and purpose.
+            Transforming spaces into beautiful, functional environments that reflect your unique personality. From cozy homes to dynamic commercial areas, I blend aesthetics with purpose.
+
             </p>
           </div>
           <div className="bg-[var(--card-bg-light)] p-6 rounded-lg shadow-lg hover:shadow-[var(--shadow-color-secondary)]/20 transition-shadow duration-300">
             <h3 className="text-2xl font-bold text-[var(--accent-secondary)] mb-3">Graphic Design</h3>
             <p className="leading-relaxed">
-              Building compelling visual narratives that resonate. Specializing in branding, digital illustration, UI/UX, and print media to create impactful and memorable brand identities.
-            </p>
+              Crafting eye-catching visuals that tell your brand’s story. From logos to UI/UX and print designs, I build identities that are memorable and impactful.            </p>
           </div>
           <div className="bg-[var(--card-bg-light)] p-6 rounded-lg shadow-lg hover:shadow-[var(--shadow-color-tertiary)]/20 transition-shadow duration-300">
             <h3 className="text-2xl font-bold text-[var(--accent-tertiary)] mb-3">Fine Art</h3>
             <p className="leading-relaxed">
-              Creating expressive and thought-provoking original artworks. Exploring various mediums to capture emotion and tell stories beyond the commercial or purely functional.
+             Bringing emotion to life through original artworks. I explore various mediums to create expressive pieces that go beyond function and connect deeply with the viewer.
+
             </p>
           </div>
         </div>

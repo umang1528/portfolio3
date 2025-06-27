@@ -23,7 +23,7 @@ const AboutPage: React.FC = () => {
           <div className="text-center">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">
-                Alex Chen
+                UMANG
               </span>
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] mb-6 sm:mb-8 font-light max-w-lg mx-auto">
@@ -49,19 +49,16 @@ const AboutPage: React.FC = () => {
       {/* End of New Hero Section */}
 
       <section>
-        <SectionTitle title="Welcome to My Creative Space" subtitle="A passionate designer dedicated to crafting beautiful and functional experiences." />
+        <SectionTitle title="Welcome to My Creative Space" subtitle="Where imagination meets intention." />
         <div className="max-w-3xl mx-auto text-[var(--text-secondary)] space-y-6 text-lg leading-relaxed text-center md:text-left">
           <p>
-            Hello! I'm Alex, a versatile designer with a keen eye for detail and a passion for blending aesthetics with functionality. 
-            My expertise spans both <strong className="text-[var(--accent-primary)]">Interior Design</strong>, where I create inspiring and harmonious living and working spaces, 
-            and <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, where I craft compelling visual identities and digital experiences.
+            Hi, I’m Umang — a passionate designer with a sharp eye for detail and a heart for crafting experiences that are both beautiful and purposeful. My journey blends creativity with strategy to bring ideas to life in meaningful ways. <strong className="text-[var(--accent-primary)]">Interior Design</strong>, transforming ordinary spaces into inspiring environments that reflect your personality and style. <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, building bold, memorable visuals that connect, communicate, and leave a lasting impression.
           </p>
           <p>
-            I believe that great design tells a story, evokes emotion, and solves problems. Whether it's transforming a room into a sanctuary or building a brand from the ground up, 
-            I approach each project with creativity, precision, and a collaborative spirit.
+            For me, design is more than just how something looks — it’s how it works, feels, and tells a story. Whether it’s turning a room into a sanctuary or creating a brand identity from scratch, I approach every project with passion, precision, and a collaborative spirit.
           </p>
           <p>
-            Explore my portfolio to see how I bring ideas to life, and learn more about my skills and experience. Let's create something amazing together!
+            Explore my work and see how I bring ideas into reality.
           </p>
         </div>
       </section>
