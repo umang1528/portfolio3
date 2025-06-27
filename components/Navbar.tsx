@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center">
             <NavLink to="/" className="text-3xl font-bold text-[var(--accent-primary)] hover:text-[var(--accent-secondary)] transition-colors interactive-cursor-target">
-              Designer<span className="text-[var(--accent-secondary)] hover:text-[var(--accent-primary)]">Hub</span>
+              U  <span className="text-[var(--accent-secondary)] hover:text-[var(--accent-primary)]">Kreations</span>
             </NavLink>
           </div>
           <div className="hidden md:flex items-center space-x-4">

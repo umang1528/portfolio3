@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
                           px] h-[600px] 
                            sm:w-[600pxpx] sm:h-[400px] 
                            md:w-[300px] md:h-[375px] 
-                           lg:w-[360px] lg:h-[450px] 
+                           lg:w-[600px] lg:h-[450px] 
                            transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-color-primary)]/40"
               />
             </div>
@@ -28,11 +28,11 @@ const HomePage: React.FC = () => {
             <div className="text-center md:text-left">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]">
-                  Welcome to DesignerHub
+                  Welcome with Desiging aura
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-10 font-light max-w-xl md:max-w-none">
-                Fusing innovative <strong className="text-[var(--accent-primary)]">Interior Design</strong>, captivating <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, and expressive <strong className="text-[var(--accent-tertiary)]">Fine Art</strong> to craft your vision into reality.
+                Blending <strong className="text-[var(--accent-primary)]">Innovative Iinteriors</strong>, bold <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, and  soulful  <strong className="text-[var(--accent-tertiary)]">Fine Art</strong>  art to turn imagination into immersive experiences.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <NavLink

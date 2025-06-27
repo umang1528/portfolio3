@@ -3,6 +3,10 @@ import { Project } from '../types';
 import PortfolioCard from '../components/PortfolioCard';
 import SectionTitle from '../components/SectionTitle';
 import PortfolioItemPreview from '../components/PortfolioItemPreview'; // Import the new component
+import img1 from '../img/coffee/coffe.jpg';
+import img2 from '../img/coffee/coffe2.jpg';
+import img3 from '../img/coffee/coffe3.jpg';
+import grp1 from '../img/GRP/IM1.png';
 
 const initialProjects: Project[] = [
   {
@@ -11,8 +15,8 @@ const initialProjects: Project[] = [
     category: 'Interior Design',
     description: 'A complete redesign of a downtown loft, focusing on open space, natural light, and industrial-chic elements. Custom furniture and smart home integration. This project involved extensive space planning, material sourcing, and collaboration with architects and contractors to achieve a seamless blend of comfort and style. The lighting design was a key feature, utilizing a mix of ambient, task, and accent lighting to create different moods throughout the day. Sustainability was also a core consideration, with eco-friendly materials and energy-efficient appliances being prioritized.',
     imageUrls: [
-      'https://picsum.photos/seed/loft-1/800/600',
-      'https://picsum.photos/seed/loft-2/800/600',
+      img1,
+      img2,
       'https://picsum.photos/seed/loft-3/800/600',
       'https://picsum.photos/seed/loft-4/800/600',
       'https://picsum.photos/seed/loft-5/800/600',
@@ -24,7 +28,7 @@ const initialProjects: Project[] = [
     category: 'Graphic Design',
     description: 'Full branding package for a new sustainable cafe, including logo, menu design, packaging, and digital assets. Earthy tones and minimalist style. The brand identity aimed to convey warmth, naturalness, and a commitment to sustainability. This involved creating custom illustrations, selecting eco-friendly printing techniques, and designing a responsive website that highlighted the cafe\'s story and offerings. Social media templates were also developed to ensure brand consistency across all platforms.',
     imageUrls: [
-      'https://picsum.photos/seed/cafebrand-1/800/600',
+      img3,
       'https://picsum.photos/seed/cafebrand-2/800/600',
       'https://picsum.photos/seed/cafebrand-3/800/600',
       'https://picsum.photos/seed/cafebrand-4/800/600',
@@ -36,8 +40,8 @@ const initialProjects: Project[] = [
     category: 'Web Design',
     description: 'User interface and user experience design for a cutting-edge tech startup. Focused on intuitive navigation and a futuristic aesthetic. The project included user research, wireframing, prototyping, and user testing to ensure a seamless and engaging experience. A comprehensive design system was developed to maintain consistency and scalability. Animations and micro-interactions were used to enhance usability and provide visual delight.',
     imageUrls: [
-      'https://picsum.photos/seed/techui-1/800/600',
-      'https://picsum.photos/seed/techui-2/800/600',
+      grp1,
+      
       'https://picsum.photos/seed/techui-3/800/600',
       'https://picsum.photos/seed/techui-4/800/600',
       'https://picsum.photos/seed/techui-5/800/600',
@@ -81,9 +85,22 @@ const initialProjects: Project[] = [
       'https://picsum.photos/seed/office-4/800/600',
     ],
   },
+
+  {
+    id: '7',
+    title: 'lol',
+    category: 'Fine Arts',
+    description: 'Transforming a dated corporate office into a vibrant, collaborative workspace. Included biophilic design elements and flexible work zones. The goal was to create an environment that fostered creativity, productivity, and employee well-being. This involved redesigning meeting rooms, creating breakout areas, improving acoustics, and integrating technology seamlessly.',
+    imageUrls: [
+      'https://picsum.photos/seed/office-1/800/600',
+      'https://picsum.photos/seed/office-2/800/600',
+      'https://picsum.photos/seed/office-3/800/600',
+      'https://picsum.photos/seed/office-4/800/600',
+    ],
+  },
 ];
 
-type FilterType = 'All' | 'Interior Design' | 'Graphic Design' | 'Web Design';
+type FilterType = 'All' | 'Interior Design' | 'Graphic Design' | 'Web Design' | 'Fine Arts';
 
 const PortfolioPage: React.FC = () => {
   const [filter, setFilter] = useState<FilterType>('All');
@@ -93,7 +110,7 @@ const PortfolioPage: React.FC = () => {
     filter === 'All' || project.category === filter
   );
 
-  const categories: FilterType[] = ['All', 'Interior Design', 'Graphic Design', 'Web Design'];
+  const categories: FilterType[] = ['All', 'Interior Design', 'Graphic Design', 'Web Design','Fine Arts'];
 
   const handleOpenPreview = (projectToPreview: Project) => {
     const index = filteredProjects.findIndex(p => p.id === projectToPreview.id);
