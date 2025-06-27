@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 
 const AboutPage: React.FC = () => {
+  const portfolioImages = [
+    "https://picsum.photos/seed/portfolio1/1600/900",
+    "https://picsum.photos/seed/portfolio2/1600/900",
+    "https://picsum.photos/seed/portfolio3/1600/900"
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portfolioImages.length);
+    }, 3000); // Change image every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [portfolioImages.length]);
+
   return (
     <div className="space-y-12">
       {/* New Hero Section - Image Box Removed */}
       <section className="relative group min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 -mt-8 md:-mt-12 mb-12 md:mb-16">
         {/* Background Cover Image */}
-        <div className="absolute inset-0 z-0 transition-transform duration-1000 ease-in-out group-hover:scale-105">
+        <div className="absolute inset-0 z-0 transition-transform duration-00 ease-in-out group-hover:scale-105">
           <img 
-            src="https://picsum.photos/seed/aboutcover/1600/900" // Higher resolution for cover
+            src={portfolioImages[currentImageIndex]} // Use the current image from the state
             className="w-full h-full object-cover" 
             alt="Abstract creative background"
           />
@@ -67,13 +83,13 @@ const AboutPage: React.FC = () => {
         <div>
           <h3 className="text-3xl font-bold text-[var(--accent-primary)] mb-4">My Design Philosophy</h3>
           <p className="text-[var(--text-secondary)] leading-relaxed mb-3">
-            To me, design is more than just aesthetics; it's about creating intuitive, impactful, and memorable experiences. I focus on:
+            For me, design isn’t just about how it looks — it’s about how it feels, how it functions, and how it connects. Every layout, every pixel, every choice tells a story.
           </p>
           <ul className="list-disc list-inside text-[var(--text-secondary)] space-y-2 pl-4">
-            <li><strong className="text-[var(--accent-secondary)]">User-Centricity:</strong> Understanding needs to deliver solutions that resonate.</li>
-            <li><strong className="text-[var(--accent-secondary)]">Innovation:</strong> Pushing creative boundaries while maintaining clarity.</li>
-            <li><strong className="text-[var(--accent-secondary)]">Attention to Detail:</strong> Believing that every pixel and every placement matters.</li>
-            <li><strong className="text-[var(--accent-secondary)]">Collaboration:</strong> Working closely with clients to bring their vision to fruition.</li>
+            <li><strong className="text-[var(--accent-secondary)]">User -Centricity:</strong> Where aesthetics meet real purpose.</li>
+            <li><strong className="text-[var(--accent-secondary)]">Innovation:</strong> Breaking boundaries while keeping things clear and focused.</li>
+            <li><strong className="text-[var(--accent-secondary)]">Attention to Detail:</strong>  Every element matters. Every pixel has power.</li>
+            <li><strong className="text-[var(--accent-secondary)]">Collaboration:</strong> Working closely with clients to turn vision into something unforgettable.</li>
           </ul>
         </div>
         <div className="relative h-64 md:h-80 group overflow-hidden rounded-lg shadow-lg">

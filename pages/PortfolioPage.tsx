@@ -98,6 +98,18 @@ const initialProjects: Project[] = [
       'https://picsum.photos/seed/office-4/800/600',
     ],
   },
+  {
+    id: '8',
+    title: 'sketching',
+    category: 'Fine Arts',
+    description: 'Transforming a dated corporate office into a vibrant, collaborative workspace. Included biophilic design elements and flexible work zones. The goal was to create an environment that fostered creativity, productivity, and employee well-being. This involved redesigning meeting rooms, creating breakout areas, improving acoustics, and integrating technology seamlessly.',
+    imageUrls: [
+      'https://picsum.photos/seed/office-1/800/600',
+      'https://picsum.photos/seed/office-2/800/600',
+      'https://picsum.photos/seed/office-3/800/600',
+      'https://picsum.photos/seed/office-4/800/600',
+    ],
+  },
 ];
 
 type FilterType = 'All' | 'Interior Design' | 'Graphic Design' | 'Web Design' | 'Fine Arts';
