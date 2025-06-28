@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 
+import coffeeImg1 from '../img/coffee/coffe.jpg';
+import coffeeImg2 from '../img/coffee/coffe2.jpg';
+import coffeeImg3 from '../img/coffee/coffe3.jpg';
+import grpImg1 from '../img/GRP/IM1.png';
+import grpImg2 from '../img/GRP/IM2.png';
+
 const AboutPage: React.FC = () => {
   const portfolioImages = [
-    "https://picsum.photos/seed/portfolio1/1600/900",
-    "https://picsum.photos/seed/portfolio2/1600/900",
-    "https://picsum.photos/seed/portfolio3/1600/900"
+    { src: coffeeImg1, link: "/portfolio/item1" },
+    { src: coffeeImg2, link: "/portfolio/item2" },
+    { src: coffeeImg3, link: "/portfolio/item3" },
+    { src: grpImg1, link: "/portfolio/item4" },
+    { src: grpImg2, link: "/portfolio/item" }
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -14,56 +22,51 @@ const AboutPage: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portfolioImages.length);
-    }, 3000); // Change image every 3 seconds
+    }, 3000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, [portfolioImages.length]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="space-y-12">
-      {/* New Hero Section - Image Box Removed */}
+      {/* Hero Section */}
       <section className="relative group min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 -mt-8 md:-mt-12 mb-12 md:mb-16">
-        {/* Background Cover Image */}
-        <div className="absolute inset-0 z-0 transition-transform duration-00 ease-in-out group-hover:scale-105">
-          <img 
-            src={portfolioImages[currentImageIndex]} // Use the current image from the state
-            className="w-full h-full object-cover" 
-            alt="Abstract creative background"
+        <div className="absolute inset-0 z-0 transition-transform duration-500 ease-in-out group-hover:scale-105">
+          <img
+            src={portfolioImages[currentImageIndex].src}
+            className="w-full h-full object-cover"
+            alt="Background"
           />
-          {/* Gradient Overlay for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--body-bg)] via-[var(--body-bg)]/80 to-transparent md:bg-gradient-to-r md:from-[var(--body-bg)]/90 md:via-[var(--body-bg)]/60 md:to-transparent"></div>
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 py-16 md:py-20">
-          {/* Information Area - Centered */}
-          <div className="text-center">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">
-                UMANG
-              </span>
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] mb-6 sm:mb-8 font-light max-w-lg mx-auto">
-              Creative Interior & Graphic Designer transforming visions into captivating visual realities.
-            </p>
-            <div className="space-y-3 sm:space-y-0 sm:flex sm:space-x-4 flex-col sm:flex-row items-center justify-center">
-              <NavLink
-                to="/portfolio"
-                className="interactive-cursor-target w-full sm:w-auto inline-block px-8 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-lg hover:from-[var(--button-primary-hover-bg-gradient-from)] hover:to-[var(--button-primary-hover-bg-gradient-to)] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--body-bg)] focus:ring-[var(--accent-primary)]"
-              >
-                View My Work
-              </NavLink>
-              <NavLink
-                to="/contact"
-                className="interactive-cursor-target w-full sm:w-auto inline-block px-8 py-3 border-2 border-[var(--accent-secondary)] text-[var(--accent-secondary)] font-semibold rounded-lg shadow-md hover:bg-[var(--accent-secondary)] hover:text-[var(--button-primary-text)] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--body-bg)] focus:ring-[var(--accent-secondary)]"
-              >
-                Get In Touch
-              </NavLink>
-            </div>
+        <div className="relative z-10 container mx-auto px-6 py-16 md:py-20 text-center">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">
+              UMANG
+            </span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] mb-6 sm:mb-8 font-light max-w-lg mx-auto">
+            Creative Interior & Graphic Designer transforming visions into captivating visual realities.
+          </p>
+          <div className="space-y-3 sm:space-y-0 sm:flex sm:space-x-4 flex-col sm:flex-row items-center justify-center">
+            <NavLink
+              to="/portfolio"
+              className="interactive-cursor-target px-8 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
+            >
+              View My Work
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className="interactive-cursor-target px-8 py-3 border-2 border-[var(--accent-secondary)] text-[var(--accent-secondary)] font-semibold rounded-lg shadow-md hover:bg-[var(--accent-secondary)] hover:text-[var(--button-primary-text)] transition-all duration-300 transform hover:scale-105"
+            >
+              Get In Touch
+            </NavLink>
           </div>
         </div>
       </section>
-      {/* End of New Hero Section */}
 
+      {/* About Section */}
       <section>
         <SectionTitle title="Welcome to My Creative Space" subtitle="Where imagination meets intention." />
         <div className="max-w-3xl mx-auto text-[var(--text-secondary)] space-y-6 text-lg leading-relaxed text-center md:text-left">
@@ -78,7 +81,8 @@ const AboutPage: React.FC = () => {
           </p>
         </div>
       </section>
-      
+
+      {/* Philosophy Section */}
       <section className="grid md:grid-cols-2 gap-8 items-center bg-[var(--card-bg-light)] p-6 sm:p-8 rounded-lg shadow-xl">
         <div>
           <h3 className="text-3xl font-bold text-[var(--accent-primary)] mb-4">My Design Philosophy</h3>
@@ -88,18 +92,18 @@ const AboutPage: React.FC = () => {
           <ul className="list-disc list-inside text-[var(--text-secondary)] space-y-2 pl-4">
             <li><strong className="text-[var(--accent-secondary)]">User -Centricity:</strong> Where aesthetics meet real purpose.</li>
             <li><strong className="text-[var(--accent-secondary)]">Innovation:</strong> Breaking boundaries while keeping things clear and focused.</li>
-            <li><strong className="text-[var(--accent-secondary)]">Attention to Detail:</strong>  Every element matters. Every pixel has power.</li>
+            <li><strong className="text-[var(--accent-secondary)]">Attention to Detail:</strong> Every element matters. Every pixel has power.</li>
             <li><strong className="text-[var(--accent-secondary)]">Collaboration:</strong> Working closely with clients to turn vision into something unforgettable.</li>
           </ul>
         </div>
         <div className="relative h-64 md:h-80 group overflow-hidden rounded-lg shadow-lg">
-            <img 
-              src="https://picsum.photos/seed/designmood/600/400" 
-              alt="Design Inspiration" 
-              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)]/50 to-transparent"></div>
-            <p className="absolute bottom-4 left-4 text-white text-lg font-semibold">Creating inspiring environments.</p>
+          <img
+            src="https://picsum.photos/seed/designmood/600/400"
+            alt="Design Inspiration"
+            className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--card-bg)]/50 to-transparent"></div>
+          <p className="absolute bottom-4 left-4 text-white text-lg font-semibold">Creating inspiring environments.</p>
         </div>
       </section>
     </div>
