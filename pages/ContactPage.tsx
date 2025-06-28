@@ -120,7 +120,7 @@ const ContactPage: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
-                <span>Creative City, Design State, 12345</span>
+                <span>171/Gali-5, Ambedkar Nagar, Haiderpur, Shalimar Bagh, Delhi-110088</span>
               </p>
             </div>
           </div>
@@ -129,7 +129,7 @@ const ContactPage: React.FC = () => {
             <p className="text-[var(--text-secondary)]">
               I am currently available for freelance projects and full-time opportunities. Feel free to reach out!
             </p>
-            <p className="text-[var(--text-secondary)] text-sm mt-2 opacity-75">171/Gali-5, Ambedkar Nagar, Haiderpur, Shalimar Bagh, Delhi-110088 </p>
+            <p className="text-[var(--text-secondary)] text-sm mt-2 opacity-75"> Delhi-110088 </p>
           </div>
         </div>
       </div>
