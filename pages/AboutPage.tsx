@@ -10,20 +10,19 @@ import grpImg2 from '../img/GRP/IM2.png';
 
 const AboutPage: React.FC = () => {
   const portfolioImages = [
-    { src: coffeeImg1, link: "/portfolio/item1" },
-    { src: coffeeImg2, link: "/portfolio/item2" },
-    { src: coffeeImg3, link: "/portfolio/item3" },
-    { src: grpImg1, link: "/portfolio/item4" },
-    { src: grpImg2, link: "/portfolio/item" }
+    { src: coffeeImg1, caption: "Modern Loft Apartment", link: "/portfolio/item1" },
+    { src: coffeeImg2, caption: "Minimal Meets Cozy", link: "/portfolio/item2" },
+    { src: coffeeImg3, caption: "Bold Concepts, Elegant Execution", link: "/portfolio/item3" },
+    { src: grpImg1, caption: "Vibrant Visual Identities", link: "/portfolio/item4" },
+    { src: grpImg2, caption: "Designs that Speak for You", link: "/portfolio/item" }
   ];
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % portfolioImages.length);
-    }, 3000);
-
+      setCurrentIndex(prev => (prev + 1) % portfolioImages.length);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
 
@@ -31,15 +30,40 @@ const AboutPage: React.FC = () => {
     <div className="space-y-12">
       {/* Hero Section */}
       <section className="relative group min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 -mt-8 md:-mt-12 mb-12 md:mb-16">
-        <div className="absolute inset-0 z-0 transition-transform duration-500 ease-in-out group-hover:scale-105">
-          <img
-            src={portfolioImages[currentImageIndex].src}
-            className="w-full h-full object-cover"
-            alt="Background"
-          />
+        
+        {/* Background Crossfade Layer */}
+        <div className="absolute inset-0 z-0">
+          {portfolioImages.map((img, index) => (
+            <img
+              key={index}
+              src={img.src}
+              alt={`bg-${index}`}
+              className={`
+                w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out
+                ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
+              `}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--body-bg)] via-[var(--body-bg)]/80 to-transparent md:bg-gradient-to-r md:from-[var(--body-bg)]/90 md:via-[var(--body-bg)]/60 md:to-transparent"></div>
         </div>
 
+        {/* Caption Text */}
+        <div className="absolute bottom-24 sm:bottom-32 px-4 z-10">
+          {portfolioImages.map((img, index) => (
+            <p
+              key={index}
+              className={`
+                absolute left-1/2 transform -translate-x-1/2 text-center text-white text-lg sm:text-xl md:text-2xl font-medium
+                transition-opacity duration-1000 ease-in-out
+                ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
+              `}
+            >
+              {img.caption}
+            </p>
+          ))}
+        </div>
+
+        {/* Foreground Content */}
         <div className="relative z-10 container mx-auto px-6 py-16 md:py-20 text-center">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">
