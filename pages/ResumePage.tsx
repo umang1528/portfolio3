@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 const experiences: Experience[] = [
   {
     id: 'exp1',
-    title: 'Senior Interior & Graphic Designer',
+    title: ' Interior & Graphic Designer',
     company: 'Creative Solutions Inc.',
     duration: '2020 - Present',
     responsibilities: [

@@ -28,8 +28,8 @@ const HomePage: React.FC = () => {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-[var(--body-bg)] via-[var(--accent-secondary)]/40 to-[var(--accent-primary)]/30 rounded-xl shadow-2xl overflow-hidden">
-        <div className="container mx-auto px-6">
+      <section className="py-16 md:py-30 bg-gradient-to-br from-[var(--body-bg)] via-[var(--accent-secondary)]/40 to-[var(--accent-primary)]/30 rounded-xl shadow-2xl overflow-hidden">
+        <div className="container mx-auto px-12">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Image Side */}
             <div className="flex justify-center md:justify-start group">
