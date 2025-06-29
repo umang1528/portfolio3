@@ -29,32 +29,34 @@ const AboutPage: React.FC = () => {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <section className="relative group min-h-[calc(100vh-5rem)] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 -mt-8 md:-mt-12 mb-12 md:mb-16">
-        
-        {/* Background Crossfade Layer */}
+      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+
+        {/* Background Images */}
         <div className="absolute inset-0 z-0">
           {portfolioImages.map((img, index) => (
             <img
               key={index}
               src={img.src}
               alt={`bg-${index}`}
-              className={`
-                w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 ease-in-out
+              className={`w-full h-full object-cover absolute transition-opacity duration-1000 ease-in-out
                 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
               `}
+              style={{ filter: 'brightness(0.75)' }} // ✅ Dim Effect
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--body-bg)] via-[var(--body-bg)]/80 to-transparent md:bg-gradient-to-r md:from-[var(--body-bg)]/90 md:via-[var(--body-bg)]/60 md:to-transparent"></div>
+
+          {/* Dim Overlay */}
+          <div className="absolute inset-0 bg-black/40 z-[1]" />
         </div>
 
-        {/* Caption Text */}
-        <div className="absolute bottom-24 sm:bottom-32 px-4 z-10">
+        {/* Caption */}
+        <div className="absolute bottom-24 sm:bottom-32 z-[2] px-4">
           {portfolioImages.map((img, index) => (
             <p
               key={index}
               className={`
-                absolute left-1/2 transform -translate-x-1/2 text-center text-white text-lg sm:text-xl md:text-2xl font-medium
-                transition-opacity duration-1000 ease-in-out
+                absolute left-1/2 transform -translate-x-1/2 text-center text-white text-lg sm:text-xl md:text-2xl font-semibold
+                bg-black/40 px-4 py-2 rounded-md backdrop-blur-sm transition-opacity duration-1000 ease-in-out
                 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
               `}
             >
@@ -64,25 +66,25 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative z-10 container mx-auto px-6 py-16 md:py-20 text-center">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">
+        <div className="relative z-[2] container mx-auto px-6 py-16 md:py-20 text-center text-white">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-3 sm:mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
               UMANG
             </span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] mb-6 sm:mb-8 font-light max-w-lg mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl font-light max-w-2xl mx-auto drop-shadow-[0_1px_6px_rgba(0,0,0,0.7)]">
             Creative Interior & Graphic Designer transforming visions into captivating visual realities.
           </p>
-          <div className="space-y-3 sm:space-y-0 sm:flex sm:space-x-4 flex-col sm:flex-row items-center justify-center">
+          <div className="mt-6 space-y-3 sm:space-y-0 sm:flex sm:space-x-4 flex-col sm:flex-row items-center justify-center">
             <NavLink
               to="/portfolio"
-              className="interactive-cursor-target px-8 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
+              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:scale-105 transition-all duration-300"
             >
               View My Work
             </NavLink>
             <NavLink
               to="/contact"
-              className="interactive-cursor-target px-8 py-3 border-2 border-[var(--accent-secondary)] text-[var(--accent-secondary)] font-semibold rounded-lg shadow-md hover:bg-[var(--accent-secondary)] hover:text-[var(--button-primary-text)] transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-3 border-2 border-pink-500 text-pink-400 font-semibold rounded-lg shadow-md hover:bg-pink-500 hover:text-white transition-all duration-300 transform hover:scale-105"
             >
               Get In Touch
             </NavLink>
@@ -95,14 +97,16 @@ const AboutPage: React.FC = () => {
         <SectionTitle title="Welcome to My Creative Space" subtitle="Where imagination meets intention." />
         <div className="max-w-3xl mx-auto text-[var(--text-secondary)] space-y-6 text-lg leading-relaxed text-center md:text-left">
           <p>
-            Hi, I’m Umang — a passionate designer with a sharp eye for detail and a heart for crafting experiences that are both beautiful and purposeful. My journey blends creativity with strategy to bring ideas to life in meaningful ways. <strong className="text-[var(--accent-primary)]">Interior Design</strong>, transforming ordinary spaces into inspiring environments that reflect your personality and style. <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, building bold, memorable visuals that connect, communicate, and leave a lasting impression.
+            Hi, I’m Umang — a passionate designer with a sharp eye for detail and a heart for crafting experiences that are both beautiful and purposeful.
+            My journey blends creativity with strategy to bring ideas to life in meaningful ways.
+            <strong className="text-[var(--accent-primary)]"> Interior Design</strong>, transforming ordinary spaces into inspiring environments that reflect your personality and style.
+            <strong className="text-[var(--accent-secondary)]"> Graphic Design</strong>, building bold, memorable visuals that connect, communicate, and leave a lasting impression.
           </p>
           <p>
-            For me, design is more than just how something looks — it’s how it works, feels, and tells a story. Whether it’s turning a room into a sanctuary or creating a brand identity from scratch, I approach every project with passion, precision, and a collaborative spirit.
+            For me, design is more than just how something looks — it’s how it works, feels, and tells a story. Whether it’s turning a room into a sanctuary or creating a brand identity from scratch,
+            I approach every project with passion, precision, and a collaborative spirit.
           </p>
-          <p>
-            Explore my work and see how I bring ideas into reality.
-          </p>
+          <p>Explore my work and see how I bring ideas into reality.</p>
         </div>
       </section>
 
@@ -114,7 +118,7 @@ const AboutPage: React.FC = () => {
             For me, design isn’t just about how it looks — it’s about how it feels, how it functions, and how it connects. Every layout, every pixel, every choice tells a story.
           </p>
           <ul className="list-disc list-inside text-[var(--text-secondary)] space-y-2 pl-4">
-            <li><strong className="text-[var(--accent-secondary)]">User -Centricity:</strong> Where aesthetics meet real purpose.</li>
+            <li><strong className="text-[var(--accent-secondary)]">User-Centricity:</strong> Where aesthetics meet real purpose.</li>
             <li><strong className="text-[var(--accent-secondary)]">Innovation:</strong> Breaking boundaries while keeping things clear and focused.</li>
             <li><strong className="text-[var(--accent-secondary)]">Attention to Detail:</strong> Every element matters. Every pixel has power.</li>
             <li><strong className="text-[var(--accent-secondary)]">Collaboration:</strong> Working closely with clients to turn vision into something unforgettable.</li>

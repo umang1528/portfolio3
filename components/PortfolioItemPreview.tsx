@@ -139,9 +139,10 @@ const PortfolioItemPreview: React.FC<PortfolioItemPreviewProps> = ({
       aria-modal="true"
       aria-labelledby="portfolio-item-title"
       aria-describedby="portfolio-item-description" // Added for accessibility
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-opacity duration-300 ease-out ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
-      }`}
+      className={`absolute top-0 left-0 right-0 z-[100] flex justify-center p-4 transition-opacity duration-300 ease-out ${
+  isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+}`}
+style={{ minHeight: '100%' }}
     >
       <div className="absolute inset-0 bg-[var(--body-bg)]/80 backdrop-blur-md" onClick={handleClose} tabIndex={-1}></div>
 
