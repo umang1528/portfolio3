@@ -7,6 +7,7 @@ import img1 from '../img/coffee/coffe.jpg';
 import img2 from '../img/coffee/coffe2.jpg';
 import img3 from '../img/coffee/coffe3.jpg';
 import grp1 from '../img/GRP/IM1.png';
+import pdf from "../"
 
 const initialProjects: Project[] = [
   {

@@ -2,6 +2,9 @@ import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { Experience, Education } from '../types';
 import { NavLink } from 'react-router-dom';
+import UmangResume from "../public/assets/pdf/Umang_Kumar_resume.pdf"
+
+
 
 const experiences: Experience[] = [
   {
@@ -49,8 +52,18 @@ const ResumePage: React.FC = () => {
   return (
     <div>
       <SectionTitle title="My Journey" subtitle="A summary of my professional experience and educational background." />
+        
 
       <div className="max-w-4xl mx-auto space-y-12">
+        <div className="text-center pt-8 mb-6">
+           <a 
+          href={UmangResume} 
+          download='Umang Kumar'
+ className="interactive-cursor-target px-8 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-md hover:from-[var(--button-primary-hover-bg-gradient-from)] hover:to-[var(--button-primary-hover-bg-gradient-to)] transition-all duration-300 transform hover:scale-105"        >
+          {/* <DownloadIcon className="w-5 h-5 mr-2" /> */}
+          Download Full CV
+        </a>
+        </div>
         {/* Experience Section */}
         <section>
           <h3 className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] mb-6 pb-2 border-b-2 border-[var(--border-color)]">
@@ -92,17 +105,10 @@ const ResumePage: React.FC = () => {
           </div>
         </section>
 
-        <div className="text-center pt-8">
-            <NavLink 
-                to="/contact" 
-                className="interactive-cursor-target px-8 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-md hover:from-[var(--button-primary-hover-bg-gradient-from)] hover:to-[var(--button-primary-hover-bg-gradient-to)] transition-all duration-300 transform hover:scale-105"
-            >
-                Download Full CV (Request via Contact)
-            </NavLink>
-        </div>
       </div>
     </div>
   );
 };
 
 export default ResumePage;
+
