@@ -4,8 +4,8 @@ import SectionTitle from '../components/SectionTitle';
 
 // Importing images from coffee and GRP folders
 import coffeeImg from '../img/coffee/coffe.jpg';
-import coffeeImg from '../img/coffee/coffe2.jpg';
-import coffeeImg from '../img/coffee/coffe3.jpg';
+// import coffeeImg from '../img/coffee/coffe2.jpg';
+// import coffeeImg from '../img/coffee/coffe3.jpg';
 import grpImg1 from '../img/GRP/IM1.png';
 import grpImg2 from '../img/GRP/IM2.png';
 

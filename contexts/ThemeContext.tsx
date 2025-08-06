@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback, Rea
 import { Theme, ThemeContextType, ThemeColors } from '../types';
 import { THEMES } from '../constants/themes';
 
-const defaultTheme = THEMES.find(t => t.id === 'default-dark') || THEMES[0];
+const defaultTheme = THEMES.find(t => t.id === 'classic-light') || THEMES[0];
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 

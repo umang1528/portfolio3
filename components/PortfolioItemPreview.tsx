@@ -142,7 +142,7 @@ const PortfolioItemPreview: React.FC<PortfolioItemPreviewProps> = ({
       className={`absolute top-0 left-0 right-0 z-[100] flex justify-center p-4 transition-opacity duration-300 ease-out ${
   isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
 }`}
-style={{ minHeight: '100%' }}
+// style={{ minHeight: '1%' }}
     >
       <div className="absolute inset-0 bg-[var(--body-bg)]/80 backdrop-blur-md" onClick={handleClose} tabIndex={-1}></div>
 

@@ -1,26 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import SectionTitle from '../components/SectionTitle';
+import emailjs from "@emailjs/browser"
+import toast from 'react-hot-toast';
+import { fireConfetti } from '@/utils/confetti';
+
+
+type FormData = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const form = useRef<HTMLFormElement>(null);
+const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if (!form.current) return;
+
+
+  emailjs
+    .sendForm('service_84dnxod', 'template_xrcdyvq', form.current, {
+      publicKey: 'dztJw92j-VeikwxqW',
+    })
+     .then(
+      () => {
+        fireConfetti(); // 🎉 Poppers
+        toast.success('✅ Message Sent Successfully!', {
+          icon: '🚀',
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      },
+      (error) => {
+        toast.error('❌ Message Failed. Please try again!');
+        console.error('FAILED...', error.text);
+      }
+    );
+};
+
+
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+    const [feedback, setFeedback] = useState<null | { type: 'success' | 'error'; message: string }>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Form data submitted:', formData);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' }); 
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   console.log('Form data submitted:', formData);
+  //   setIsSubmitted(true);
+  //   setFormData({ name: '', email: '', subject: '', message: '' }); 
+  //   setTimeout(() => setIsSubmitted(false), 5000);
+  // };
 
   return (
     <div>
@@ -35,68 +78,83 @@ const ContactPage: React.FC = () => {
               Thank you for your message! I'll get back to you soon.
             </div>
           )}
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Full Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
-                placeholder="Your Name"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
-                placeholder="you@example.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Subject</label>
-              <input
-                type="text"
-                name="subject"
-                id="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
-                placeholder="Project Inquiry"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Message</label>
-              <textarea
-                name="message"
-                id="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
-                placeholder="Tell me about your project..."
-              ></textarea>
-            </div>
-            <div>
-              <button
-                type="submit"
-                className="interactive-cursor-target w-full px-6 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-md hover:from-[var(--button-primary-hover-bg-gradient-from)] hover:to-[var(--button-primary-hover-bg-gradient-to)] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--card-bg)] focus:ring-[var(--input-focus-ring)]"
-              >
-                Send Message
-              </button>
-            </div>
-          </form>
+         <form ref={form} onSubmit={sendEmail} className="space-y-6">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Full Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
+            placeholder="Your Name"
+          />
         </div>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="subject" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Subject</label>
+          <input
+            type="text"
+            name="subject"
+            id="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
+            placeholder="Project Inquiry"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-sm font-medium text-[var(--text-secondary)] mb-1">Message</label>
+          <textarea
+            name="message"
+            id="message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            required
+            className="interactive-cursor-target w-full px-4 py-2.5 bg-[var(--input-bg)] border border-[var(--input-border)] text-[var(--text-primary)] rounded-lg focus:ring-2 focus:ring-[var(--input-focus-ring)] focus:border-[var(--input-focus-ring)] transition-colors"
+            placeholder="Tell me about your project..."
+          ></textarea>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="interactive-cursor-target w-full px-6 py-3 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-md hover:from-[var(--button-primary-hover-bg-gradient-from)] hover:to-[var(--button-primary-hover-bg-gradient-to)] transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--card-bg)] focus:ring-[var(--input-focus-ring)]"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+
+      {feedback && (
+        <div className={`mt-4 text-sm font-medium px-4 py-3 rounded-md ${
+          feedback.type === 'success'
+            ? 'text-green-800 bg-green-100 border border-green-300'
+            : 'text-red-800 bg-red-100 border border-red-300'
+        }`}>
+          {feedback.message}
+        </div>
+         )}
+         </div>
+        
 
         {/* Contact Details */}
         <div className="order-1 md:order-2 space-y-8">
