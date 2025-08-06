@@ -27,9 +27,9 @@ const AboutPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 ">
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="relative min-h-[80vh] mt-4 flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 bottom-12">
 
         {/* Background Images */}
         <div className="absolute inset-0 z-0">
@@ -50,13 +50,13 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Caption */}
-        <div className="absolute bottom-24 sm:bottom-32 z-[2] px-4">
+        <div className="absolute bottom-10 sm:bottom-32 z-[2] px-2 w-full flex justify-center right-20">
           {portfolioImages.map((img, index) => (
             <p
               key={index}
               className={`
-                absolute left-1/2 transform -translate-x-1/2 text-center text-white text-lg sm:text-xl md:text-2xl font-semibold
-                bg-black/40 px-4 py-2 rounded-md backdrop-blur-sm transition-opacity duration-1000 ease-in-out
+                absolute left-1/2 transform -translate-x-1/4 text-center text-white text-lg sm:text-xl md:text-2xl font-normal
+                bg-black/40 px-10 py-2 rounded-lg backdrop-blur-sm transition-opacity duration-1000 ease-in-out
                 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}
               `}
             >

@@ -25,7 +25,7 @@ const App: React.FC = () => {
 <Toaster
   position="top-right"
   toastOptions={{
-    duration: 500,
+    duration: 4000,
     style: {
       background: 'radial-gradient(circle at top left, #1f1f1f, #000)',
       color: '#ffffff',
