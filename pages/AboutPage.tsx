@@ -29,7 +29,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="space-y-12 ">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] mt-4 flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 bottom-12">
+      <section className="relative min-h-[80vh] rounded-lg mt-4 flex items-center justify-center overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8 bottom-12">
 
         {/* Background Images */}
         <div className="absolute inset-0 z-0">

@@ -1,21 +1,19 @@
-
-import React from 'react';
+import type React from "react"
 
 interface SectionTitleProps {
-  title: string;
-  subtitle?: string;
+  title: string
+  subtitle?: string
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({ title, subtitle }) => {
   return (
-    <div className="mb-1 md:mb-1 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[var(--section-title-from)] to-[var(--section-title-to)] mb-2">
+    <div className="text-center mb-16">
+      <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
         {title}
-      </h2>
-      {subtitle && <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">{subtitle}</p>}
-      <div className="mt-4 h-1 w-24 bg-gradient-to-r from-[var(--section-title-underline-from)] to-[var(--section-title-underline-to)] mx-auto rounded-full"></div>
+      </h1>
+      {subtitle && <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">{subtitle}</p>}
     </div>
-  );
-};
+  )
+}
 
-export default SectionTitle;
+export default SectionTitle

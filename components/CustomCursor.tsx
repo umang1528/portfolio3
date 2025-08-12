@@ -8,8 +8,8 @@ interface Particle {
   initialSize: number;
   color: string;
   createdAt: number;
-  dx: number; // horizontal velocity
-  dy: number; // vertical velocity
+  dx: number;
+  dy: number;
 }
 
 const MAX_PARTICLES = 500;
@@ -23,6 +23,7 @@ const CustomCursor: React.FC = () => {
   const [isHoveringInteractive, setIsHoveringInteractive] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [isDesktop, setIsDesktop] = useState(false);
   const { theme } = useTheme();
 
   const cursorDotRef = useRef<HTMLDivElement>(null);
@@ -31,8 +32,24 @@ const CustomCursor: React.FC = () => {
   const particleGenerationId = useRef<number | null>(null);
   const lastParticleTimeRef = useRef<number>(0);
 
-  // Effect for mouse tracking (dot/outline position, hover state, visibility)
+  // Check screen size on mount and resize
   useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth > 900);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  // Effect for mouse tracking (only on desktop)
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const handleMouseMove = (event: MouseEvent) => {
       if (!isVisible) setIsVisible(true);
       
@@ -76,10 +93,12 @@ const CustomCursor: React.FC = () => {
       document.documentElement.removeEventListener('mouseleave', handleMouseLeaveDocument);
       document.documentElement.removeEventListener('mouseenter', handleMouseEnterDocument);
     };
-  }, [isVisible]);
+  }, [isVisible, isDesktop]);
 
-  // Effect for PARTICLE GENERATION
+  // Effect for PARTICLE GENERATION (only on desktop)
   useEffect(() => {
+    if (!isDesktop) return;
+
     const generationLoop = () => {
       const now = performance.now();
       if (
@@ -119,11 +138,12 @@ const CustomCursor: React.FC = () => {
         cancelAnimationFrame(particleGenerationId.current);
       }
     };
-  }, [isVisible, position, theme.colors, particles.length]);
+  }, [isVisible, position, theme.colors, particles.length, isDesktop]);
 
-
-  // Effect for PARTICLE ANIMATION (updating existing particles)
+  // Effect for PARTICLE ANIMATION (only on desktop)
   useEffect(() => {
+    if (!isDesktop) return;
+
     const animateParticles = () => {
       const now = performance.now();
       setParticles(prevParticles =>
@@ -149,7 +169,11 @@ const CustomCursor: React.FC = () => {
         cancelAnimationFrame(particleAnimationId.current);
       }
     };
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) {
+    return null; // Don't render anything on mobile/tablet
+  }
 
   const dotBaseSize = 15;
   const outlineBaseSize = 5;
@@ -175,11 +199,6 @@ const CustomCursor: React.FC = () => {
     borderWidth: outlineBorderWidth,
     opacity: outlineCalculatedOpacity,
   };
-
-  const outlineClasses = ['custom-cursor-outline'];
-  if (isHoveringInteractive) {
-    outlineClasses.push('interactive');
-  }
 
   return (
     <>
@@ -213,7 +232,7 @@ const CustomCursor: React.FC = () => {
         );
       })}
       <div ref={cursorDotRef} className="custom-cursor-dot" style={dotStyle} />
-      <div ref={cursorOutlineRef} className={outlineClasses.join(' ')} style={outlineStyle} />
+      <div ref={cursorOutlineRef} className={`custom-cursor-outline ${isHoveringInteractive ? 'interactive' : ''}`} style={outlineStyle} />
     </>
   );
 };

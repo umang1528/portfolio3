@@ -5,6 +5,7 @@ export interface NavItem {
 }
 
 export interface Project {
+  mediaType: string;
   id: string;
   title: string;
   category: 'Interior Design' | 'Graphic Design' | 'Web Design' ;
@@ -12,6 +13,24 @@ export interface Project {
   imageUrls: string[]; // Changed from imageUrl: string
   // detailsUrl?: string; // Removed, preview is now internal
 }
+
+export interface Project {
+  id: string
+  title: string
+  description: string
+  category: string
+  imageUrls: string[]
+  mediaType?: string
+  longDescription?: string
+  technologies?: string[]
+  liveUrl?: string
+  githubUrl?: string
+  features?: string[]
+  challenges?: string[]
+  duration?: string
+  role?: string
+}
+
 
 export interface Skill {
   id: string;

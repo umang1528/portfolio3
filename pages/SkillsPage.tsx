@@ -8,7 +8,7 @@ const skillsData: Skill[] = [
   // Software
   { id: 's4', name: 'Coreldraw', level: 92, category: 'Software' },
   { id: 's1', name: 'Adobe Photoshop', level: 95, category: 'Software' },
-  { id: 's2', name: 'Adobe Illustrator', level: 90, category: 'Software' },
+  { id: 's2', name: 'Adobe Illustrator', level: 75, category: 'Software' },
   { id: 's3', name: 'Adobe InDesign', level: 85, category: 'Software' },
   // { id: 's5', name: 'Sketch', level: 80, category: 'Software' },
   { id: 's6', name: 'AutoCAD', level: 88, category: 'Software' },
