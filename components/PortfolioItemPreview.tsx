@@ -204,7 +204,7 @@ const portfolioProjects: Project[] = [
   },
 ]
 
-export default function ProjectDetailPage() {
+export default function PortfolioItemPreview() {
   const { id } = useParams()
   const navigate = useNavigate()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
