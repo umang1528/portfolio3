@@ -3,15 +3,19 @@ import { NavLink } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 
 // Importing images from coffee and GRP folders
-import coffeeImg from '../img/coffee/coffe.jpg'
-import grpImg1 from '../img/GRP/IM1.png'
-import grpImg2 from '../img/GRP/IM2.png'
+import coffeeImg from '../img/coffee/coffe.jpg';
+// import grpImg1 from '../img/GRP/IM1.png'
+// import grpImg2 from '../img/GRP/IM2.png'
+// import grpImg3 from '../img/GRP/img1.jpg'
+// import grpImg4 from '../img/GRP/horse.jpg'
 
 const HomePage: React.FC = () => {
   const portfolioImages = [
-    { src: coffeeImg, link: "/portfolio/item1" },
-    { src: grpImg1, link: "/portfolio/item2" },
-    { src: grpImg2, link: "/portfolio/item3" },
+    { src: coffeeImg, link: "/portfolio" },
+    // { src: grpImg1, link: "/project/2" },
+    // { src: grpImg2, link: "/project/3" },
+    // { src: grpImg3, link: "/project/4" },
+    // { src: grpImg4, link: "/project/5" },
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -26,69 +30,60 @@ const HomePage: React.FC = () => {
   return (
     <div className="space-y-8 md:space-y-12 px-4 sm:px-6">
       {/* Hero Section */}
-     <section className="py-12 md:py-24 lg:py-30 bg-gradient-to-br from-[var(--body-bg)] via-[var(--accent-secondary)]/40 to-[var(--accent-primary)]/30 rounded-xl shadow-2xl overflow-hidden">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-            {/* Image Side - Optimized for tablet view */}
-            <div className="flex justify-center order-1 md:order-none group">
-              <NavLink to={portfolioImages[currentImageIndex].link}>
-                <img
-                  src={portfolioImages[currentImageIndex].src}
-                  alt={`Portfolio ${currentImageIndex + 1}`}
-                  className="rounded-xl shadow-2xl border-4 border-[var(--card-bg)] object-cover 
-                             w-full h-auto 
-                             max-w-[280px] max-h-[350px]  /* Mobile */
-                             sm:max-w-[320px] sm:max-h-[400px] /* Small tablet */
-                             md:max-w-[280px] md:max-h-[350px] /* Tablet */
-                             lg:max-w-[350px] lg:max-h-[450px] /* Laptop */
-                             xl:max-w-[400px] xl:max-h-[500px] /* Desktop */
-                             transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-[var(--shadow-color-primary)]/40"
-                />
-              </NavLink>
-            </div>
+     <section className="relative py-12 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-br from-[var(--body-bg)] via-[var(--accent-secondary)]/30 to-[var(--accent-primary)]/20 overflow-hidden">
+  {/* Decorative elements */}
+  <div className="absolute inset-0 opacity-10
+">
+    <div className="absolute top-10 left-10 w-20 h-20 rounded-full bg-[var(--accent-primary)] blur-xl"></div>
+    <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-[var(--accent-secondary)] blur-xl"></div>
+  </div>
 
-            {/* Text Side with optimized buttons */}
-            <div className="text-center md:text-left order-0 md:order-none">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 md:mb-6">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]">
-                  Welcome to Designing Aura
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-[var(--text-secondary)] mb-6 md:mb-10 font-light max-w-xl mx-auto md:mx-0">
-                Blending <strong className="text-[var(--accent-primary)]">Innovative Interiors</strong>, bold <strong className="text-[var(--accent-secondary)]">Graphic Design</strong>, and soulful <strong className="text-[var(--accent-tertiary)]">Fine Art</strong> to turn imagination into immersive experiences.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <NavLink
-                  to="/portfolio"
-                  className="w-full sm:w-auto 
-                            px-5 py-2.5   /* Mobile */
-                            sm:px-6 sm:py-3 /* Small tablet */
-                            md:px-6 md:py-3 /* Tablet */
-                            lg:px-8 lg:py-3.5 /* Laptop */
-                            xl:px-10 xl:py-4 /* Desktop */
-                            bg-[var(--accent-primary)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-xl hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 
-                            text-sm sm:text-base md:text-base lg:text-lg"
-                >
-                  Explore Portfolio
-                </NavLink>
-                <NavLink
-                  to="/about"
-                  className="w-full sm:w-auto 
-                            px-5 py-2.5   /* Mobile */
-                            sm:px-6 sm:py-3 /* Small tablet */
-                            md:px-6 md:py-3 /* Tablet */
-                            lg:px-8 lg:py-3.5 /* Laptop */
-                            xl:px-10 xl:py-4 /* Desktop */
-                            bg-[var(--accent-secondary)] text-white font-semibold rounded-lg shadow-xl hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105 
-                            text-sm sm:text-base md:text-base lg:text-lg"
-                >
-                  Meet The Designer
-                </NavLink>
-              </div>
-            </div>
-          </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 xl:gap-16">
+      {/* Image Container - Responsive sizing */}
+      <div className="w-full lg:w-1/2 order-2 lg:order-1">
+        <div className="relative group overflow-hidden rounded-xl shadow-2xl border-4 border-[var(--card-bg)] hover:border-[var(--accent-primary)] transition-all duration-300">
+          <NavLink to={portfolioImages[currentImageIndex].link}>
+            <img
+              src={portfolioImages[currentImageIndex].src}
+              alt={`Portfolio ${currentImageIndex + 1}`}
+              className="w-full h-auto aspect-square object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </NavLink>
         </div>
-      </section>
+      </div>
+
+      {/* Text Content - Responsive sizing */}
+      <div className="w-full lg:w-1/2 order-1 lg:order-2 text-center lg:text-left">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 md:mb-6">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]">
+            Welcome to Designing Aura
+          </span>
+        </h1>
+        
+        <p className="text-lg sm:text-xl md:text-2xl text-[var(--text-secondary)] mb-6 md:mb-8 max-w-lg mx-auto lg:mx-0">
+          Blending <span className="font-semibold text-[var(--accent-primary)]">Innovative Interiors</span>, bold <span className="font-semibold text-[var(--accent-secondary)]">Graphic Design</span>, and soulful <span className="font-semibold text-[var(--accent-tertiary)]">Fine Art</span> to turn imagination into immersive experiences.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+          <NavLink
+            to="/portfolio"
+            className="px-6 py-3 sm:px-8 sm:py-3.5 bg-gradient-to-r from-[var(--button-primary-bg-gradient-from)] to-[var(--button-primary-bg-gradient-to)] text-[var(--button-primary-text)] font-semibold rounded-lg shadow-lg hover:shadow-[var(--shadow-color-primary)]/40 hover:scale-[1.03] transition-all duration-300"
+          >
+            Explore Portfolio
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="px-6 py-3 sm:px-8 sm:py-3.5 bg-[var(--accent-secondary)] text-white font-semibold rounded-lg shadow-lg hover:bg-[var(--accent-secondary)]/90 hover:scale-[1.03] transition-all duration-300"
+          >
+            Meet The Designer
+          </NavLink>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* What I Do Section */}
       <section className="px-4 sm:px-6">
