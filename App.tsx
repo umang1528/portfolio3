@@ -8,7 +8,7 @@ import ResumePage from "./pages/ResumePage";
 import PortfolioPage from "./pages/PortfolioPage";
 import SkillsPage from "./pages/SkillsPage";
 import ContactPage from "./pages/ContactPage";
-import ProjectDetail from "../portfolio3/components/PortfolioItemPreview";
+import ProjectDetail from "./components/PortfolioItemPreview";
 import AnimatedPage from "./components/AnimatedPage";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import CustomCursor from "./components/CustomCursor";
