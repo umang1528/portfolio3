@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from '../components/SectionTitle';
 import { Experience, Education } from '../types';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import UmangResume from "../public/assets/pdf/Umang_Kumar_resume.pdf"
 
 

@@ -15,8 +15,8 @@ import {
   Lightbulb,
   Award,
 } from "lucide-react"
-import img1 from'../img/coffee/coffe.jpg';
-import img2 from'../img/coffee/coffe2.jpg';
+import img1 from'../img/coffee/coffe.jpg'
+import img2 from'../img/coffee/coffe2.jpg'
 
 const portfolioProjects: Project[] = [
   {

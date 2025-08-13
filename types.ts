@@ -4,15 +4,15 @@ export interface NavItem {
   path: string;
 }
 
-export interface Project {
-  mediaType: string;
-  id: string;
-  title: string;
-  category: 'Interior Design' | 'Graphic Design' | 'Web Design' ;
-  description: string;
-  imageUrls: string[]; // Changed from imageUrl: string
-  // detailsUrl?: string; // Removed, preview is now internal
-}
+// export interface Project {
+//   mediaType: string;
+//   id: string;
+//   title: string;
+//   category: 'Interior Design' | 'Graphic Design' | 'Web Design'|'Fine Arts' ;
+//   description: string;
+//   imageUrls: string[]; // Changed from imageUrl: string
+//   // detailsUrl?: string; // Removed, preview is now internal
+// }
 
 export interface Project {
   id: string

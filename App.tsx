@@ -1,19 +1,19 @@
-import type React from "react"
-import { HashRouter, Routes, Route } from "react-router-dom"
-import Navbar from "./components/Navbar"
-import Footer from "./components/Footer"
-import HomePage from "./pages/HomePage"
-import AboutPage from "./pages/AboutPage"
-import ResumePage from "./pages/ResumePage"
-import PortfolioPage from "./pages/PortfolioPage"
-import SkillsPage from "./pages/SkillsPage"
-import ContactPage from "./pages/ContactPage"
-import ProjectDetail from "../portfolio3/components/PortfolioItemPreview"
-import AnimatedPage from "./components/AnimatedPage"
-import { ThemeProvider } from "./contexts/ThemeContext"
-import CustomCursor from "./components/CustomCursor"
-import AnimatedBackground from "./components/AnimatedBackground"
-import { Toaster } from "react-hot-toast"
+import type React from "react";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ResumePage from "./pages/ResumePage";
+import PortfolioPage from "./pages/PortfolioPage";
+import SkillsPage from "./pages/SkillsPage";
+import ContactPage from "./pages/ContactPage";
+import ProjectDetail from "../portfolio3/components/PortfolioItemPreview";
+import AnimatedPage from "./components/AnimatedPage";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import CustomCursor from "./components/CustomCursor";
+import AnimatedBackground from "./components/AnimatedBackground";
+import { Toaster } from "react-hot-toast";
 
 const App: React.FC = () => {
   return (
@@ -157,7 +157,7 @@ const App: React.FC = () => {
         </div>
       </HashRouter>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

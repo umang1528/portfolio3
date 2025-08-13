@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Skill } from '../types';
-import { CogIcon, LightbulbIcon, CodeBracketIcon, BriefcaseIcon } from './icons/SkillIcons';
+import { CogIcon, LightbulbIcon, CodeBracketIcon, BriefcaseIcon } from './icons/SkillIcons'
 
 interface SkillCardProps {
   skill: Skill;

@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Skill } from '../types';
-import SkillCard from '../components/SkillCard';
-import SectionTitle from '../components/SectionTitle';
+import SkillCard from '../components/SkillCard'
+import SectionTitle from '../components/SectionTitle'
 
 const skillsData: Skill[] = [
   // Software

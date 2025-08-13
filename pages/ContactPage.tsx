@@ -2,7 +2,7 @@ import React, { useState,useRef } from 'react';
 import SectionTitle from '../components/SectionTitle';
 import emailjs from "@emailjs/browser"
 import toast from 'react-hot-toast';
-import { fireConfetti } from '@/utils/confetti';
+import { fireConfetti } from '@/utils/confetti'
 
 
 type FormData = {

@@ -1,7 +1,7 @@
 import PortfolioCard from "../components/PortfolioCard"
 import type { Project } from "../types"
-import img1 from'../img/coffee/coffe.jpg';
-import img2 from'../img/coffee/coffe2.jpg';
+import img1 from'../img/coffee/coffe.jpg'
+import img2 from'../img/coffee/coffe2.jpg'
 
 
 const portfolioProjects: Project[] = [

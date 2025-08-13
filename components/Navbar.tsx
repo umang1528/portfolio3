@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { NavItem } from '../types';
-import { MenuIcon, XIcon } from './icons/NavIcons'; 
-import ThemeSwitcher from './ThemeSwitcher';
+import { MenuIcon, XIcon } from './icons/NavIcons' 
+import ThemeSwitcher from './ThemeSwitcher'
 
 const navItems: NavItem[] = [
   { name: 'Home', path: '/' },

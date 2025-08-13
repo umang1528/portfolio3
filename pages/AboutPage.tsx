@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SectionTitle from '../components/SectionTitle';
 
-import coffeeImg1 from '../img/coffee/coffe.jpg';
-import coffeeImg2 from '../img/coffee/coffe2.jpg';
-import coffeeImg3 from '../img/coffee/coffe3.jpg';
-import grpImg1 from '../img/GRP/IM1.png';
-import grpImg2 from '../img/GRP/IM2.png';
+import coffeeImg1 from '../img/coffee/coffe.jpg'
+import coffeeImg2 from '../img/coffee/coffe2.jpg'
+import coffeeImg3 from '../img/coffee/coffe3.jpg'
+import grpImg1 from '../img/GRP/IM1.png'
+import grpImg2 from '../img/GRP/IM2.png'
 
 const AboutPage: React.FC = () => {
   const portfolioImages = [
